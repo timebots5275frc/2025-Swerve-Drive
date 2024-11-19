@@ -23,8 +23,8 @@ import frc.robot.CustomTypes.Math.Vector2;
     public static final class DriveConstants {
       // Drivetrain Motor and Encoder IDs
 
-      // #region <Robot 2024 Constants>
-      public static final SwerveCanIDs Robot2024Can = new SwerveCanIDs(
+      // #region <Robot 2025 Constants>
+      public static final SwerveCanIDs Robot2025Can = new SwerveCanIDs(
           2, // LEFT_FRONT_DRIVE_MOTOR_ID 
           1, // LEFT_FRONT_STEER_MOTOR_ID 
           3, // RIGHT_FRONT_DRIVE_MOTOR_ID 
@@ -38,7 +38,7 @@ import frc.robot.CustomTypes.Math.Vector2;
           12, // LEFT_REAR_STEER_ENCODER_ID 
           13); // RIGHT_REAR_STEER_ENCODER_ID 
 
-      public static final SwerveModuleLocations Robot2024SwerveLocations = new SwerveModuleLocations(
+      public static final SwerveModuleLocations Robot2025SwerveLocations = new SwerveModuleLocations(
           ((29 / 2) - 3.25) * MathConstants.INCH_TO_METER, // LEFT_FRONT_WHEEL_X
           ((30 / 2) - 3.25) * MathConstants.INCH_TO_METER, // LEFT_FRONT_WHEEL_Y
           ((29 / 2) - 3.25) * MathConstants.INCH_TO_METER, // RIGHT_FRONT_WHEEL_X
@@ -102,8 +102,8 @@ import frc.robot.CustomTypes.Math.Vector2;
       // #endregion
 
       // CHANGE TO SET CURRENT ROBOT INFO //
-      public static final SwerveCanIDs ROBOT_SWERVE_CAN = Robot2024Can;
-      public static final SwerveModuleLocations ROBOT_SWERVE_LOCATIONS = Robot2024SwerveLocations;
+      public static final SwerveCanIDs ROBOT_SWERVE_CAN = Robot2025Can;
+      public static final SwerveModuleLocations ROBOT_SWERVE_LOCATIONS = Robot2025SwerveLocations;
       //////////////////////////////////////
 
       public static final double WHEEL_RADIUS = 2.0 * 0.0254; // meters * 0.98
