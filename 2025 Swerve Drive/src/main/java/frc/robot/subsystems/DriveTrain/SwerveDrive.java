@@ -55,10 +55,10 @@ public class SwerveDrive extends SubsystemBase {
     @Override
     public void periodic() {
         SmartDashboard.putNumber("Heading", getHeading().getDegrees());
-        SmartDashboard.putNumber("LF Drive Speed", leftFrontSwerveModule.driveNEOMotorEncoder.getVelocity());
-        SmartDashboard.putNumber("RF Drive Speed", rightFrontSwerveModule.driveNEOMotorEncoder.getVelocity());
-        SmartDashboard.putNumber("LR Drive Speed", leftRearSwerveModule.driveNEOMotorEncoder.getVelocity());
-        SmartDashboard.putNumber("RR Drive Speed", rightRearSwerveModule.driveNEOMotorEncoder.getVelocity());
+        SmartDashboard.putNumber("LF Drive Speed", leftFrontSwerveModule.driveNEOVortexMotorEncoder.getVelocity());
+        SmartDashboard.putNumber("RF Drive Speed", rightFrontSwerveModule.driveNEOVortexMotorEncoder.getVelocity());
+        SmartDashboard.putNumber("LR Drive Speed", leftRearSwerveModule.driveNEOVortexMotorEncoder.getVelocity());
+        SmartDashboard.putNumber("RR Drive Speed", rightRearSwerveModule.driveNEOVortexMotorEncoder.getVelocity());
     }
 
     /**

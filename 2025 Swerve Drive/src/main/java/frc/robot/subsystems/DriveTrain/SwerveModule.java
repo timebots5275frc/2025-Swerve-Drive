@@ -3,6 +3,7 @@ package frc.robot.subsystems.DriveTrain;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkPIDController;
+import com.revrobotics.CANSparkFlex;
 import com.revrobotics.CANSparkLowLevel;
 
 import edu.wpi.first.math.controller.PIDController;
@@ -17,9 +18,9 @@ import frc.robot.Constants.DriveConstants;
 
 public class SwerveModule {
 
-    public CANSparkMax driveMotor;
-    private CANSparkMax steerMotor;
-    public RelativeEncoder driveNEOMotorEncoder; // NEO build-in Encoder
+    public CANSparkFlex driveMotor;
+    private CANSparkFlex steerMotor;
+    public RelativeEncoder driveNEOVortexMotorEncoder; // NEO build-in Encoder
 
     private CANcoder steerAngleEncoder;
 
@@ -29,13 +30,13 @@ public class SwerveModule {
 
     public SwerveModule(int driveMotorID, int steerMotorID, int steerEncoderId) {
 
-        driveMotor = new CANSparkMax(driveMotorID, CANSparkLowLevel.MotorType.kBrushless);
-        steerMotor = new CANSparkMax(steerMotorID, CANSparkLowLevel.MotorType.kBrushless);
+        driveMotor = new CANSparkFlex(driveMotorID, CANSparkLowLevel.MotorType.kBrushless);
+        steerMotor = new CANSparkFlex(steerMotorID, CANSparkLowLevel.MotorType.kBrushless);
 
         steerAngleEncoder = new CANcoder(steerEncoderId);
 
-        driveNEOMotorEncoder = driveMotor.getEncoder();
-        driveNEOMotorEncoder.setPositionConversionFactor(DriveConstants.DRIVE_GEAR_RATIO * DriveConstants.WHEEL_CIRCUMFERENCE);
+        driveNEOVortexMotorEncoder = driveMotor.getEncoder();
+        driveNEOVortexMotorEncoder.setPositionConversionFactor(DriveConstants.DRIVE_GEAR_RATIO * DriveConstants.WHEEL_CIRCUMFERENCE);
 
         /// PID Controllers ///
         steerAnglePID = new PIDController(DriveConstants.PID_Encoder_Steer.P, DriveConstants.PID_Encoder_Steer.I, DriveConstants.PID_Encoder_Steer.D);
@@ -68,7 +69,7 @@ public class SwerveModule {
      * @return The current state of the module.
      */
     public SwerveModuleState getState() {
-        double driveSpeed = speedFromDriveRpm(driveNEOMotorEncoder.getVelocity());
+        double driveSpeed = speedFromDriveRpm(driveNEOVortexMotorEncoder.getVelocity());
         double steerAngleRadians = Math.toRadians(steerAngleEncoder.getAbsolutePosition().getValue() * 360);
 
         return new SwerveModuleState(driveSpeed, new Rotation2d(steerAngleRadians));
@@ -96,7 +97,7 @@ public class SwerveModule {
         double driveMotorRpm = driveRpmFromSpeed(state.speedMetersPerSecond);
 
         if (logValues) {
-            double driveSpeed = driveNEOMotorEncoder.getVelocity();
+            double driveSpeed = driveNEOVortexMotorEncoder.getVelocity();
             SmartDashboard.putNumber(name + " DriveSpeedMetersPerSecond", state.speedMetersPerSecond);
             SmartDashboard.putNumber(name + " DriveMotorRpmCommand", driveMotorRpm);
             SmartDashboard.putNumber(name + " DriveMotorSpeed", driveSpeed);
@@ -128,7 +129,7 @@ public class SwerveModule {
     }
 
     public SwerveModulePosition getPosition() {
-        double distance = driveNEOMotorEncoder.getPosition();
+        double distance = driveNEOVortexMotorEncoder.getPosition();
         return new SwerveModulePosition(distance, new Rotation2d(Math.toRadians(steerAngleEncoder.getAbsolutePosition().getValue())));
     }
 }

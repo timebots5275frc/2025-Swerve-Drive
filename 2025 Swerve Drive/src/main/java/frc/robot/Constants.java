@@ -126,10 +126,11 @@ import frc.robot.CustomTypes.Math.Vector2;
       // Second Stage | 28 | 16 |
       // Third Stage | 15 | 60 |
       //
-      // Overall Gear Ratio = 0.1225
-      // One rotation of the motor gives 0.1225 rotations of the wheel.
-      // 8.163 rotations of the motor gives one rotation of the wheel.
-      public static final double DRIVE_GEAR_RATIO = (14.0 / 50.0) * (28.0 / 16.0) * (15.0 / 60.0);
+      // Overall Gear Ratio = .169
+      // One rotation of the motor gives .169 rotations of the wheel.
+      // 5.9 rotations of the motor gives one rotation of the wheel.
+      // https://www.swervedrivespecialties.com/products/mk4n-swerve-module
+      public static final double DRIVE_GEAR_RATIO = .169f;
 
       // Steer motor gear ratio
       // | Driving Gear | Driven Gear |
