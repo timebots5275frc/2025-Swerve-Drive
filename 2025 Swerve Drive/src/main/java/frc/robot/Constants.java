@@ -130,7 +130,7 @@ import frc.robot.CustomTypes.Math.Vector2;
       // One rotation of the motor gives .169 rotations of the wheel.
       // 5.9 rotations of the motor gives one rotation of the wheel.
       // https://www.swervedrivespecialties.com/products/mk4n-swerve-module
-      public static final double DRIVE_GEAR_RATIO = .169f;
+      public static final double DRIVE_GEAR_RATIO = .169;
 
       // Steer motor gear ratio
       // | Driving Gear | Driven Gear |
@@ -140,7 +140,7 @@ import frc.robot.CustomTypes.Math.Vector2;
       // Overall Gear Ration = 0.1171875
       // One rotation of the motor gives 0.1171875 rotations of the wheel.
       // 8.533 rotations of the motor gives one rotation of the wheel.
-      public static final double STEER_GEAR_RATIO = (15.0 / 32) * (10 / 40);
+      public static final double STEER_GEAR_RATIO = .053;
       // #endregion
 
       // #region <PID Values>
