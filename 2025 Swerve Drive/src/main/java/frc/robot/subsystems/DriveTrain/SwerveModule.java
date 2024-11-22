@@ -55,11 +55,11 @@ public class SwerveModule {
         steerMotorVelocityPID.setOutputRange(-1, 1);
 
         // set PID coefficients
-        driveMotorVelocityPID.setP(DriveConstants.PID_SparkMax_Drive.P);
-        driveMotorVelocityPID.setI(DriveConstants.PID_SparkMax_Drive.I);
-        driveMotorVelocityPID.setD(DriveConstants.PID_SparkMax_Drive.D);
-        driveMotorVelocityPID.setIZone(DriveConstants.PID_SparkMax_Drive.IZ);
-        driveMotorVelocityPID.setFF(DriveConstants.PID_SparkMax_Drive.kFF);
+        driveMotorVelocityPID.setP(DriveConstants.PID_SparkFlex_Drive.P);
+        driveMotorVelocityPID.setI(DriveConstants.PID_SparkFlex_Drive.I);
+        driveMotorVelocityPID.setD(DriveConstants.PID_SparkFlex_Drive.D);
+        driveMotorVelocityPID.setIZone(DriveConstants.PID_SparkFlex_Drive.IZ);
+        driveMotorVelocityPID.setFF(DriveConstants.PID_SparkFlex_Drive.kFF);
         driveMotorVelocityPID.setOutputRange(-1, 1);
     }
 

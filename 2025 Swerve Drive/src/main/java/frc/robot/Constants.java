@@ -49,6 +49,7 @@ import frc.robot.CustomTypes.Math.Vector2;
           0* MathConstants.INCH_TO_METER); //LEFT_REAR_WHEEL_Y
       // #endregion
 
+
       // #region <Robot 2023 Constants>
         public static final SwerveCanIDs Robot2025SwerveCAN = new SwerveCanIDs(
           0, // LEFT_FRONT_DRIVE_MOTOR_ID 
@@ -78,7 +79,7 @@ import frc.robot.CustomTypes.Math.Vector2;
             30, // LEFT_FRONT_STEER_ENCODER_ID
             31, // RIGHT_FRONT_STEER_ENCODER_ID 
             33, // LEFT_REAR_STEER_ENCODER_ID
-            32); // // RIGHT_REAR_STEER_ENCODER_ID
+           32); // // RIGHT_REAR_STEER_ENCODER_ID
 
         public static final SwerveModuleLocations CaidBotSwerveLocations = new SwerveModuleLocations(
           9.375   * MathConstants.INCH_TO_METER, // LEFT_FRONT_WHEEL_X
@@ -89,7 +90,7 @@ import frc.robot.CustomTypes.Math.Vector2;
           -12.375 * MathConstants.INCH_TO_METER, // RIGHT_REAR_WHEEL_Y
           -9.375  * MathConstants.INCH_TO_METER, // LEFT_REAR_WHEEL_X
           12.375  * MathConstants.INCH_TO_METER); //LEFT_REAR_WHEEL_Y
-          // for the future peoples: https://docs.wpilib.org/en/stable/docs/software/basic-programming/coordinate-system.html
+// for the future peoples: https://docs.wpilib.org/en/stable/docs/software/basic-programming/coordinate-system.html
           // swerve drive location is center of wheel.
           // origin point is center of robot.
       // #endregion
@@ -139,7 +140,7 @@ import frc.robot.CustomTypes.Math.Vector2;
       // #region <PID Values>
       public static final PID_Values PID_SparkMax_Steer = new PID_Values(0.0001, 0, 0, 0, 0.00005);
       public static final PID_Values PID_Encoder_Steer = new PID_Values(20, 10, 0);
-      public static final PID_Values PID_SparkMax_Drive = new PID_Values(0.0003, 0, 0, 0, 0.00016);
+      public static final PID_Values PID_SparkFlex_Drive = new PID_Values(0.0003, 0, 0, 0, 0.00016);
       // #endregion
 
       public static final double AUTO_ODOMETRY_DRIVE_MIN_SPEED = .1;
