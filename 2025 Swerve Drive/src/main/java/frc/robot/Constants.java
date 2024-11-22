@@ -67,28 +67,28 @@ import frc.robot.CustomTypes.Math.Vector2;
 
       // #region <CaidBot Constants>
           public static final SwerveCanIDs CaidBotSwerveCAN = new SwerveCanIDs(
-            0, // LEFT_FRONT_DRIVE_MOTOR_ID 
-            0, // LEFT_FRONT_STEER_MOTOR_ID 
-            0, // RIGHT_FRONT_DRIVE_MOTOR_ID 
-            0, // RIGHT_FRONT_STEER_MOTOR_ID 
-            0, // LEFT_REAR_DRIVE_MOTOR_ID 
-            0, // LEFT_REAR_STEER_MOTOR_ID 
-            0, // RIGHT_REAR_DRIVE_MOTOR_ID
-            0, // RIGHT_REAR_STEER_MOTOR_ID
+            10, // LEFT_FRONT_DRIVE_MOTOR_ID 
+            20, // LEFT_FRONT_STEER_MOTOR_ID 
+            11, // RIGHT_FRONT_DRIVE_MOTOR_ID 
+            21, // RIGHT_FRONT_STEER_MOTOR_ID 
+            13, // LEFT_REAR_DRIVE_MOTOR_ID 
+            23, // LEFT_REAR_STEER_MOTOR_ID 
+            12, // RIGHT_REAR_DRIVE_MOTOR_ID
+            22, // RIGHT_REAR_STEER_MOTOR_ID
             30, // LEFT_FRONT_STEER_ENCODER_ID
             31, // RIGHT_FRONT_STEER_ENCODER_ID 
             33, // LEFT_REAR_STEER_ENCODER_ID
             32); // // RIGHT_REAR_STEER_ENCODER_ID
 
         public static final SwerveModuleLocations CaidBotSwerveLocations = new SwerveModuleLocations(
-          9.375* MathConstants.INCH_TO_METER, // LEFT_FRONT_WHEEL_X
-          12.375* MathConstants.INCH_TO_METER, // LEFT_FRONT_WHEEL_Y
-          9.375  * MathConstants.INCH_TO_METER, // RIGHT_FRONT_WHEEL_X
+          9.375   * MathConstants.INCH_TO_METER, // LEFT_FRONT_WHEEL_X
+          12.375  * MathConstants.INCH_TO_METER, // LEFT_FRONT_WHEEL_Y
+          9.375   * MathConstants.INCH_TO_METER, // RIGHT_FRONT_WHEEL_X
           -12.375 * MathConstants.INCH_TO_METER, // RIGHT_FRONT_WHEEL_Y
-          -9.375 * MathConstants.INCH_TO_METER, // RIGHT_REAR_WHEEL_X
+          -9.375  * MathConstants.INCH_TO_METER, // RIGHT_REAR_WHEEL_X
           -12.375 * MathConstants.INCH_TO_METER, // RIGHT_REAR_WHEEL_Y
-          -9.375 * MathConstants.INCH_TO_METER, // LEFT_REAR_WHEEL_X
-          12.375 * MathConstants.INCH_TO_METER); //LEFT_REAR_WHEEL_Y
+          -9.375  * MathConstants.INCH_TO_METER, // LEFT_REAR_WHEEL_X
+          12.375  * MathConstants.INCH_TO_METER); //LEFT_REAR_WHEEL_Y
           // for the future peoples: https://docs.wpilib.org/en/stable/docs/software/basic-programming/coordinate-system.html
           // swerve drive location is center of wheel.
           // origin point is center of robot.
@@ -108,8 +108,8 @@ import frc.robot.CustomTypes.Math.Vector2;
       public static final double CONTROLLER_TWIST_RATE = 2; // constant turn rate for using controller
 
       // #region <Misc CAN IDs>
-        public static final int PIGEON_IMU_ID = 9;
-        public static final int PIGEON_2_ID = 9;
+        //public static final int PIGEON_IMU_ID = 9; //this doesnt do anything????
+        public static final int PIGEON_2_ID = 29;
       // #endregion
 
       // #region <Gear Ratios>
