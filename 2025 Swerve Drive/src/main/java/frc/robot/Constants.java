@@ -33,77 +33,70 @@ import frc.robot.CustomTypes.Math.Vector2;
           6, // LEFT_REAR_STEER_MOTOR_ID 
           8, // RIGHT_REAR_DRIVE_MOTOR_ID 
           7, // RIGHT_REAR_STEER_MOTOR_ID 
-          10, // LEFT_FRONT_STEER_ENCODER_ID 
-          11, // RIGHT_FRONT_STEER_ENCODER_ID 
-          12, // LEFT_REAR_STEER_ENCODER_ID 
-          13); // RIGHT_REAR_STEER_ENCODER_ID 
+          30, // LEFT_FRONT_STEER_ENCODER_ID 
+          31, // RIGHT_FRONT_STEER_ENCODER_ID 
+          33, // LEFT_REAR_STEER_ENCODER_ID 
+          32); // RIGHT_REAR_STEER_ENCODER_ID 
 
       public static final SwerveModuleLocations Robot2025SwerveLocations = new SwerveModuleLocations(
-          ((29 / 2) - 3.25) * MathConstants.INCH_TO_METER, // LEFT_FRONT_WHEEL_X
-          ((30 / 2) - 3.25) * MathConstants.INCH_TO_METER, // LEFT_FRONT_WHEEL_Y
-          ((29 / 2) - 3.25) * MathConstants.INCH_TO_METER, // RIGHT_FRONT_WHEEL_X
-          (-(30 / 2) + 3.25) * MathConstants.INCH_TO_METER, // RIGHT_FRONT_WHEEL_Y
-          (-(29 / 2) + 3.25) * MathConstants.INCH_TO_METER, // RIGHT_REAR_WHEEL_X
-          (-(30 / 2) + 3.25) * MathConstants.INCH_TO_METER, // RIGHT_REAR_WHEEL_Y
-          (-(29 / 2) + 3.25) * MathConstants.INCH_TO_METER, // LEFT_REAR_WHEEL_X
-          ((30 / 2) - 3.25) * MathConstants.INCH_TO_METER); //LEFT_REAR_WHEEL_Y
+          0* MathConstants.INCH_TO_METER, // LEFT_FRONT_WHEEL_X
+          0* MathConstants.INCH_TO_METER, // LEFT_FRONT_WHEEL_Y
+          0* MathConstants.INCH_TO_METER, // RIGHT_FRONT_WHEEL_X
+          0 * MathConstants.INCH_TO_METER, // RIGHT_FRONT_WHEEL_Y
+          0 * MathConstants.INCH_TO_METER, // RIGHT_REAR_WHEEL_X
+          0 * MathConstants.INCH_TO_METER, // RIGHT_REAR_WHEEL_Y
+          0 * MathConstants.INCH_TO_METER, // LEFT_REAR_WHEEL_X
+          0* MathConstants.INCH_TO_METER); //LEFT_REAR_WHEEL_Y
       // #endregion
 
       // #region <Robot 2023 Constants>
-        public static final SwerveCanIDs Robot2023SwerveCAN = new SwerveCanIDs(
-          1, // LEFT_FRONT_DRIVE_MOTOR_ID 
-          2, // LEFT_FRONT_STEER_MOTOR_ID 
-          3, // RIGHT_FRONT_DRIVE_MOTOR_ID 
-          4, // RIGHT_FRONT_STEER_MOTOR_ID 
-          5, // LEFT_REAR_DRIVE_MOTOR_ID 
-          6, // LEFT_REAR_STEER_MOTOR_ID 
-          7, // RIGHT_REAR_DRIVE_MOTOR_ID 
-          8, // RIGHT_REAR_STEER_MOTOR_ID 
-          10, // LEFT_FRONT_STEER_ENCODER_ID 
-          11, // RIGHT_FRONT_STEER_ENCODER_ID 
-          12, // LEFT_REAR_STEER_ENCODER_ID 
-          13); // RIGHT_REAR_STEER_ENCODER_ID 
-
-        public static final SwerveModuleLocations Robot2023SwerveLocations = new SwerveModuleLocations(
-          (11 - 2.25) * MathConstants.INCH_TO_METER, // LEFT_FRONT_WHEEL_X
-          (14 - 2.25) * MathConstants.INCH_TO_METER, // LEFT_FRONT_WHEEL_Y
-          (11 - 2.25) * MathConstants.INCH_TO_METER, // RIGHT_FRONT_WHEEL_X
-          (-14 + 2.25) * MathConstants.INCH_TO_METER, // RIGHT_FRONT_WHEEL_Y
-          (-11 + 2.25) * MathConstants.INCH_TO_METER, // RIGHT_REAR_WHEEL_X
-          (-14 + 2.25) * MathConstants.INCH_TO_METER, // RIGHT_REAR_WHEEL_Y
-          (-11 + 2.25) * MathConstants.INCH_TO_METER, // LEFT_REAR_WHEEL_X
-          (14 - 2.25) * MathConstants.INCH_TO_METER); //LEFT_REAR_WHEEL_Y
+        public static final SwerveCanIDs Robot2025SwerveCAN = new SwerveCanIDs(
+          0, // LEFT_FRONT_DRIVE_MOTOR_ID 
+          0, // LEFT_FRONT_STEER_MOTOR_ID 
+          0, // RIGHT_FRONT_DRIVE_MOTOR_ID 
+          0, // RIGHT_FRONT_STEER_MOTOR_ID 
+          0, // LEFT_REAR_DRIVE_MOTOR_ID 
+          0, // LEFT_REAR_STEER_MOTOR_ID 
+          0, // RIGHT_REAR_DRIVE_MOTOR_ID 
+          0, // RIGHT_REAR_STEER_MOTOR_ID 
+          0, // LEFT_FRONT_STEER_ENCODER_ID 
+          0, // RIGHT_FRONT_STEER_ENCODER_ID 
+          0, // LEFT_REAR_STEER_ENCODER_ID 
+          0); // RIGHT_REAR_STEER_ENCODER_ID 
       // #endregion
 
       // #region <CaidBot Constants>
           public static final SwerveCanIDs CaidBotSwerveCAN = new SwerveCanIDs(
-            1, // LEFT_FRONT_DRIVE_MOTOR_ID 
-            2, // LEFT_FRONT_STEER_MOTOR_ID 
-            5, // RIGHT_FRONT_DRIVE_MOTOR_ID 
-            6, // RIGHT_FRONT_STEER_MOTOR_ID 
-            3, // LEFT_REAR_DRIVE_MOTOR_ID 
-            4, // LEFT_REAR_STEER_MOTOR_ID 
-            7, // RIGHT_REAR_DRIVE_MOTOR_ID
-            8, // RIGHT_REAR_STEER_MOTOR_ID
-            10, // LEFT_FRONT_STEER_ENCODER_ID
-            12, // RIGHT_FRONT_STEER_ENCODER_ID 
-            11, // LEFT_REAR_STEER_ENCODER_ID
-           13); // // RIGHT_REAR_STEER_ENCODER_ID
+            0, // LEFT_FRONT_DRIVE_MOTOR_ID 
+            0, // LEFT_FRONT_STEER_MOTOR_ID 
+            0, // RIGHT_FRONT_DRIVE_MOTOR_ID 
+            0, // RIGHT_FRONT_STEER_MOTOR_ID 
+            0, // LEFT_REAR_DRIVE_MOTOR_ID 
+            0, // LEFT_REAR_STEER_MOTOR_ID 
+            0, // RIGHT_REAR_DRIVE_MOTOR_ID
+            0, // RIGHT_REAR_STEER_MOTOR_ID
+            30, // LEFT_FRONT_STEER_ENCODER_ID
+            31, // RIGHT_FRONT_STEER_ENCODER_ID 
+            33, // LEFT_REAR_STEER_ENCODER_ID
+            32); // // RIGHT_REAR_STEER_ENCODER_ID
 
         public static final SwerveModuleLocations CaidBotSwerveLocations = new SwerveModuleLocations(
-          11.75 * MathConstants.INCH_TO_METER, // LEFT_FRONT_WHEEL_X
-          11.75 * MathConstants.INCH_TO_METER, // LEFT_FRONT_WHEEL_Y
-          11.75 * MathConstants.INCH_TO_METER, // RIGHT_FRONT_WHEEL_X
-          -11.75 * MathConstants.INCH_TO_METER, // RIGHT_FRONT_WHEEL_Y
-          -11.75 * MathConstants.INCH_TO_METER, // RIGHT_REAR_WHEEL_X
-          -11.75 * MathConstants.INCH_TO_METER, // RIGHT_REAR_WHEEL_Y
-          -11.75 * MathConstants.INCH_TO_METER, // LEFT_REAR_WHEEL_X
-          11.75 * MathConstants.INCH_TO_METER); //LEFT_REAR_WHEEL_Y
+          9.375* MathConstants.INCH_TO_METER, // LEFT_FRONT_WHEEL_X
+          12.375* MathConstants.INCH_TO_METER, // LEFT_FRONT_WHEEL_Y
+          9.375  * MathConstants.INCH_TO_METER, // RIGHT_FRONT_WHEEL_X
+          -12.375 * MathConstants.INCH_TO_METER, // RIGHT_FRONT_WHEEL_Y
+          -9.375 * MathConstants.INCH_TO_METER, // RIGHT_REAR_WHEEL_X
+          -12.375 * MathConstants.INCH_TO_METER, // RIGHT_REAR_WHEEL_Y
+          -9.375 * MathConstants.INCH_TO_METER, // LEFT_REAR_WHEEL_X
+          12.375 * MathConstants.INCH_TO_METER); //LEFT_REAR_WHEEL_Y
+          // for the future peoples: https://docs.wpilib.org/en/stable/docs/software/basic-programming/coordinate-system.html
+          // swerve drive location is center of wheel.
+          // origin point is center of robot.
       // #endregion
 
       // CHANGE TO SET CURRENT ROBOT INFO //
-      public static final SwerveCanIDs ROBOT_SWERVE_CAN = Robot2025Can;
-      public static final SwerveModuleLocations ROBOT_SWERVE_LOCATIONS = Robot2025SwerveLocations;
+      public static final SwerveCanIDs ROBOT_SWERVE_CAN = CaidBotSwerveCAN;
+      public static final SwerveModuleLocations ROBOT_SWERVE_LOCATIONS = CaidBotSwerveLocations;
       //////////////////////////////////////
 
       public static final double WHEEL_RADIUS = 2.0 * 0.0254; // meters * 0.98
