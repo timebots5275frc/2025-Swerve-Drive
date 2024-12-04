@@ -19,7 +19,7 @@ import frc.robot.Constants.DriveConstants;
 public class SwerveModule {
 
     public CANSparkFlex driveMotor;
-    private CANSparkFlex steerMotor;
+    private CANSparkMax steerMotor;
     public RelativeEncoder driveNEOVortexMotorEncoder; // NEO build-in Encoder
 
     private CANcoder steerAngleEncoder;
@@ -31,7 +31,7 @@ public class SwerveModule {
     public SwerveModule(int driveMotorID, int steerMotorID, int steerEncoderId) {
 
         driveMotor = new CANSparkFlex(driveMotorID, CANSparkLowLevel.MotorType.kBrushless);
-        steerMotor = new CANSparkFlex(steerMotorID, CANSparkLowLevel.MotorType.kBrushless);
+        steerMotor = new CANSparkMax(steerMotorID, CANSparkLowLevel.MotorType.kBrushless);
 
         steerAngleEncoder = new CANcoder(steerEncoderId);
 

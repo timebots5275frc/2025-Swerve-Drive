@@ -38,6 +38,8 @@ public class RobotContainer {
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+    
+    swerve = new SwerveDrive();
     // Configure the trigger bindings
     configureBindings();
   }
@@ -54,10 +56,11 @@ public class RobotContainer {
   private void configureBindings() {
     boolean usingJoystick = true;
     GenericHID driveInput;
-    swerve = new SwerveDrive();
+
     if (usingJoystick) {Joystick driveStick = new Joystick(0); driveInput = driveStick; } else {XboxController controller = new XboxController(0); driveInput = controller;}
+    in = new Input(driveInput);
     joyDrive = new TeleopJoystickDrive(swerve, in, true);
-    
+    swerve.setDefaultCommand(joyDrive);
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
     new Trigger(m_exampleSubsystem::exampleCondition)
         .onTrue(new ExampleCommand(m_exampleSubsystem));
