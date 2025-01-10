@@ -76,7 +76,9 @@ public class SwerveDrive extends SubsystemBase {
         SwerveModuleState[] swerveModuleStates = kinematics.toSwerveModuleStates(fieldRelative ? ChassisSpeeds.fromFieldRelativeSpeeds(xSpeed, ySpeed, rot, this.getHeading()) : new ChassisSpeeds(xSpeed, ySpeed, rot));
 
         SwerveDriveKinematics.desaturateWheelSpeeds(swerveModuleStates, DriveConstants.MAX_DRIVE_SPEED);
-
+        SmartDashboard.putNumber("LFSpeedM/S", swerveModuleStates[0].speedMetersPerSecond);
+        SmartDashboard.putNumber("LFRotRad", swerveModuleStates[0].angle.getRadians());
+        
         leftFrontSwerveModule.setDesiredState(swerveModuleStates[0], false, "LF");
         rightFrontSwerveModule.setDesiredState(swerveModuleStates[1], false, "RF");
         rightRearSwerveModule.setDesiredState(swerveModuleStates[2], false, "RR");

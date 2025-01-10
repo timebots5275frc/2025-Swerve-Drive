@@ -86,13 +86,15 @@ public class SwerveModule {
         double curSteerAngleRadians = Math.toRadians(steerAngleDegrees);
 
         // Optimize the reference state to avoid spinning further than 90 degrees
-        SwerveModuleState state = SwerveModuleState.optimize(desiredState, new Rotation2d(curSteerAngleRadians));
+        SwerveModuleState state = desiredState;//SwerveModuleState.optimize(desiredState, new Rotation2d(curSteerAngleRadians));
 
         // The output of the steerAnglePID becomes the steer motor rpm reference.
         double steerMotorRpm = steerAnglePID.calculate(steerAngleDegrees,
                 state.angle.getDegrees());
-
-        steerMotorVelocityPID.setReference(steerMotorRpm, CANSparkMax.ControlType.kVelocity);
+        SmartDashboard.putNumber(Integer.valueOf(driveMotor.getDeviceId()).toString()+" SMRPM", steerMotorRpm);
+        SmartDashboard.putNumber(Integer.valueOf(driveMotor.getDeviceId()).toString()+" SAD", state.angle.getDegrees());
+        SmartDashboard.putNumber(Integer.valueOf(driveMotor.getDeviceId()).toString()+" SAE (deg)", steerAngleEncoder.getAbsolutePosition().getValue()*360);
+        steerMotorVelocityPID.setReference(-steerMotorRpm, CANSparkMax.ControlType.kVelocity);
 
         double driveMotorRpm = driveRpmFromSpeed(state.speedMetersPerSecond);
 

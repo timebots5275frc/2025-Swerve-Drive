@@ -64,6 +64,7 @@ public class TeleopJoystickDrive extends Command {
         }
         else {
             moveInput = input.ControllerInput();
+            
             turnInput = input.ControllerTurn();
             speedPercent = input.getControllerSpeed();
         }
@@ -71,9 +72,8 @@ public class TeleopJoystickDrive extends Command {
         Vector2 inputVelocity = moveInput.times(speedPercent * Constants.DriveConstants.MAX_DRIVE_SPEED);
         double inputRotationVelocity = turnInput * speedPercent * Constants.DriveConstants.MAX_TWIST_RATE;
         int rot_sign = (int)(inputRotationVelocity / Math.abs(inputRotationVelocity));
-        if(Math.abs(inputRotationVelocity)<1){
-            inputRotationVelocity=1*rot_sign;
-        } else if(Math.abs(inputRotationVelocity)>Constants.DriveConstants.MAX_TWIST_RATE){
+        
+        if(Math.abs(inputRotationVelocity)>Constants.DriveConstants.MAX_TWIST_RATE){
             inputRotationVelocity=Constants.DriveConstants.MAX_TWIST_RATE*rot_sign;
         }
             

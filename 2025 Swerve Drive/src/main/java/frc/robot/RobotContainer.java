@@ -10,12 +10,17 @@ import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.DriveTrain.SwerveDrive;
 import frc.robot.subsystems.Input.Input;
+
+import java.nio.file.FileAlreadyExistsException;
+
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.TeleopJoystickDrive;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -59,12 +64,12 @@ public class RobotContainer {
 
     if (usingJoystick) {Joystick driveStick = new Joystick(0); driveInput = driveStick; } else {XboxController controller = new XboxController(0); driveInput = controller;}
     in = new Input(driveInput);
-    joyDrive = new TeleopJoystickDrive(swerve, in, true);
+    joyDrive = new TeleopJoystickDrive(swerve, in, false);
     swerve.setDefaultCommand(joyDrive);
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
     new Trigger(m_exampleSubsystem::exampleCondition)
         .onTrue(new ExampleCommand(m_exampleSubsystem));
-
+    new JoystickButton(driveInput, 8).onTrue(new InstantCommand(swerve::resetPigeon, swerve));
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
     m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());

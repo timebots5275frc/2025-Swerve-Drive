@@ -37,7 +37,7 @@ import frc.robot.CustomTypes.Math.Vector2;
           31, // RIGHT_FRONT_STEER_ENCODER_ID 
           33, // LEFT_REAR_STEER_ENCODER_ID 
           32); // RIGHT_REAR_STEER_ENCODER_ID 
-
+//
       public static final SwerveModuleLocations Robot2025SwerveLocations = new SwerveModuleLocations(
           0* MathConstants.INCH_TO_METER, // LEFT_FRONT_WHEEL_X
           0* MathConstants.INCH_TO_METER, // LEFT_FRONT_WHEEL_Y
@@ -82,14 +82,14 @@ import frc.robot.CustomTypes.Math.Vector2;
            32); // // RIGHT_REAR_STEER_ENCODER_ID
 
         public static final SwerveModuleLocations CaidBotSwerveLocations = new SwerveModuleLocations(
-          9.375   * MathConstants.INCH_TO_METER, // LEFT_FRONT_WHEEL_X
-          12.375  * MathConstants.INCH_TO_METER, // LEFT_FRONT_WHEEL_Y
-          9.375   * MathConstants.INCH_TO_METER, // RIGHT_FRONT_WHEEL_X
-          -12.375 * MathConstants.INCH_TO_METER, // RIGHT_FRONT_WHEEL_Y
-          -9.375  * MathConstants.INCH_TO_METER, // RIGHT_REAR_WHEEL_X
-          -12.375 * MathConstants.INCH_TO_METER, // RIGHT_REAR_WHEEL_Y
-          -9.375  * MathConstants.INCH_TO_METER, // LEFT_REAR_WHEEL_X
-          12.375  * MathConstants.INCH_TO_METER); //LEFT_REAR_WHEEL_Y
+          12.375   * MathConstants.INCH_TO_METER, // LEFT_FRONT_WHEEL_X
+          9.375  * MathConstants.INCH_TO_METER, // LEFT_FRONT_WHEEL_Y
+          12.375   * MathConstants.INCH_TO_METER, // RIGHT_FRONT_WHEEL_X
+          -9.375 * MathConstants.INCH_TO_METER, // RIGHT_FRONT_WHEEL_Y
+          -12.375  * MathConstants.INCH_TO_METER, // RIGHT_REAR_WHEEL_X
+          -9.375 * MathConstants.INCH_TO_METER, // RIGHT_REAR_WHEEL_Y
+          -12.375  * MathConstants.INCH_TO_METER, // LEFT_REAR_WHEEL_X
+          9.375  * MathConstants.INCH_TO_METER); //LEFT_REAR_WHEEL_Y
 // for the future peoples: https://docs.wpilib.org/en/stable/docs/software/basic-programming/coordinate-system.html
           // swerve drive location is center of wheel.
           // origin point is center of robot.
@@ -138,9 +138,9 @@ import frc.robot.CustomTypes.Math.Vector2;
       // #endregion
 
       // #region <PID Values>
-      public static final PID_Values PID_SparkMax_Steer = new PID_Values(0.0001, 0.000001, 0, 0, 0.00005);
+      public static final PID_Values PID_SparkMax_Steer = new PID_Values(0.0002,0.0000006,0,0,0.0001);
       public static final PID_Values PID_Encoder_Steer = new PID_Values(1, 10, 0);
-      public static final PID_Values PID_SparkFlex_Drive = new PID_Values(0.0003, 0, 0, 0, 0.00016);
+      public static final PID_Values PID_SparkFlex_Drive = new PID_Values(0.00018,0.0000005,0,0,0.00013);
       // #endregion
 
       public static final double AUTO_ODOMETRY_DRIVE_MIN_SPEED = .1;

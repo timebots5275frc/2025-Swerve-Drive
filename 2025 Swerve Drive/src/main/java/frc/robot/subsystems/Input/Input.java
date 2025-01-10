@@ -112,7 +112,7 @@ public class Input extends SubsystemBase {
     controller.setRumble(rumbleType, Throttle);
   }
 
-  public Vector2 JoystickInput() { return joystickInput; }
+  public Vector2 JoystickInput() { return /*joystickInput*/new Vector2(0,0); }
   public double JoystickTwist() { return joystickTwist; }
   public Vector2 ControllerInput() {return controllerInput; }
   public double ControllerTurn() {return controllerTurn; }
