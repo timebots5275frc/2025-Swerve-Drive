@@ -139,7 +139,7 @@ import frc.robot.CustomTypes.Math.Vector2;
 
       // #region <PID Values>
       public static final PID_Values PID_SparkMax_Steer = new PID_Values(0.0002,0.0000006,0,0,0.0001);
-      public static final PID_Values PID_Encoder_Steer = new PID_Values(1, 10, 0);
+      public static final PID_Values PID_Encoder_Steer = new PID_Values(15, 10, .1);
       public static final PID_Values PID_SparkFlex_Drive = new PID_Values(0.00018,0.0000005,0,0,0.00013);
       // #endregion
 

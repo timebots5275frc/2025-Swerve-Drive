@@ -91,9 +91,11 @@ public class SwerveModule {
         // The output of the steerAnglePID becomes the steer motor rpm reference.
         double steerMotorRpm = steerAnglePID.calculate(steerAngleDegrees,
                 state.angle.getDegrees());
-        SmartDashboard.putNumber(Integer.valueOf(driveMotor.getDeviceId()).toString()+" SMRPM", steerMotorRpm);
-        SmartDashboard.putNumber(Integer.valueOf(driveMotor.getDeviceId()).toString()+" SAD", state.angle.getDegrees());
-        SmartDashboard.putNumber(Integer.valueOf(driveMotor.getDeviceId()).toString()+" SAE (deg)", steerAngleEncoder.getAbsolutePosition().getValue()*360);
+        if (name.equals("RR")) {
+            SmartDashboard.putNumber("RRSteerAngleDeg", steerAngleDegrees);
+            SmartDashboard.putNumber("RRStateAngleDeg", state.angle.getDegrees());
+            SmartDashboard.putNumber("RRSteerMotRPM", steerMotorRpm);
+        }
         steerMotorVelocityPID.setReference(-steerMotorRpm, CANSparkMax.ControlType.kVelocity);
 
         double driveMotorRpm = driveRpmFromSpeed(state.speedMetersPerSecond);

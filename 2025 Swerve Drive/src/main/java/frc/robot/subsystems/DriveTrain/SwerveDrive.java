@@ -4,6 +4,21 @@
 
 package frc.robot.subsystems.DriveTrain;
 
+
+
+
+
+
+
+
+
+// re zero encoders, should work then.. all the swerve stuff seems alright. maybe pid tuning.
+// once ready for final test, re enable the drive motors.
+// take a look at max_twist_rate
+
+
+
+
 import java.util.List;
 import com.ctre.phoenix6.hardware.Pigeon2;
 
@@ -72,12 +87,12 @@ public class SwerveDrive extends SubsystemBase {
      */
     @SuppressWarnings("ParameterName")
     public void drive(double xSpeed, double ySpeed, double rot, boolean fieldRelative) {
-
+       
         SwerveModuleState[] swerveModuleStates = kinematics.toSwerveModuleStates(fieldRelative ? ChassisSpeeds.fromFieldRelativeSpeeds(xSpeed, ySpeed, rot, this.getHeading()) : new ChassisSpeeds(xSpeed, ySpeed, rot));
-
+        SmartDashboard.putNumber("RRDesiredM/S", swerveModuleStates[3].speedMetersPerSecond);
+        SmartDashboard.putNumber("RRRotDeg", swerveModuleStates[3].angle.getDegrees());
         SwerveDriveKinematics.desaturateWheelSpeeds(swerveModuleStates, DriveConstants.MAX_DRIVE_SPEED);
-        SmartDashboard.putNumber("LFSpeedM/S", swerveModuleStates[0].speedMetersPerSecond);
-        SmartDashboard.putNumber("LFRotRad", swerveModuleStates[0].angle.getRadians());
+        
         
         leftFrontSwerveModule.setDesiredState(swerveModuleStates[0], false, "LF");
         rightFrontSwerveModule.setDesiredState(swerveModuleStates[1], false, "RF");
