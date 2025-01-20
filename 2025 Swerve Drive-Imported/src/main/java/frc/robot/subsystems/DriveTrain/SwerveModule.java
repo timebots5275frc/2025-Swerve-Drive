@@ -1,15 +1,24 @@
 package frc.robot.subsystems.DriveTrain;
 
-import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
-import com.revrobotics.SparkPIDController;
-import com.revrobotics.CANSparkFlex;
-import com.revrobotics.CANSparkLowLevel;
+import com.revrobotics.spark.ClosedLoopSlot;
+import com.revrobotics.spark.SparkBase;
+import com.revrobotics.spark.SparkClosedLoopController;
+import com.revrobotics.spark.SparkFlex;
+import com.revrobotics.spark.SparkMax;
+import com.revrobotics.spark.SparkRelativeEncoder;
+import com.revrobotics.spark.SparkBase.PersistMode;
+import com.revrobotics.spark.SparkBase.ResetMode;
+import com.revrobotics.spark.SparkLowLevel.MotorType;
+import com.revrobotics.spark.config.ClosedLoopConfig;
+import com.revrobotics.spark.config.SparkFlexConfig;
+import com.revrobotics.spark.config.SparkMaxConfig;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
+import edu.wpi.first.units.measure.Angle;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import com.ctre.phoenix6.hardware.CANcoder;
@@ -18,49 +27,52 @@ import frc.robot.Constants.DriveConstants;
 
 public class SwerveModule {
 
-    public CANSparkFlex driveMotor;
-    private CANSparkMax steerMotor;
+    public SparkFlex driveMotor;
+    private SparkMax steerMotor;
     public RelativeEncoder driveNEOVortexMotorEncoder; // NEO build-in Encoder
 
     private CANcoder steerAngleEncoder;
 
     private PIDController steerAnglePID;
-    private SparkPIDController steerMotorVelocityPID;
-    private SparkPIDController driveMotorVelocityPID;
+    private SparkClosedLoopController steerMotorVelocityPID;
+    private SparkClosedLoopController driveMotorVelocityPID;
 
     public SwerveModule(int driveMotorID, int steerMotorID, int steerEncoderId) {
 
-        driveMotor = new CANSparkFlex(driveMotorID, CANSparkLowLevel.MotorType.kBrushless);
-        steerMotor = new CANSparkMax(steerMotorID, CANSparkLowLevel.MotorType.kBrushless);
+        driveMotor = new SparkFlex(driveMotorID, MotorType.kBrushless);
+        steerMotor = new SparkMax(steerMotorID, MotorType.kBrushless);
 
         steerAngleEncoder = new CANcoder(steerEncoderId);
 
         driveNEOVortexMotorEncoder = driveMotor.getEncoder();
-        driveNEOVortexMotorEncoder.setPositionConversionFactor(DriveConstants.DRIVE_GEAR_RATIO * DriveConstants.WHEEL_CIRCUMFERENCE);
+        //driveNEOVortexMotorEncoder.setPositionConversionFactor();
 
         /// PID Controllers ///
         steerAnglePID = new PIDController(DriveConstants.PID_Encoder_Steer.P, DriveConstants.PID_Encoder_Steer.I, DriveConstants.PID_Encoder_Steer.D);
         steerAnglePID.enableContinuousInput(-180, 180);
 
         // Get the motor controller PIDs
-        steerMotorVelocityPID = steerMotor.getPIDController();
-        driveMotorVelocityPID = driveMotor.getPIDController();
+        steerMotorVelocityPID = steerMotor.getClosedLoopController();
+        driveMotorVelocityPID = driveMotor.getClosedLoopController();
+        // set PID coefficients
+        ClosedLoopConfig steerClosedLoopConfig = new ClosedLoopConfig();
+        SparkMaxConfig steerConfig = new SparkMaxConfig();
+        steerClosedLoopConfig.pidf(DriveConstants.PID_SparkMax_Steer.P, DriveConstants.PID_SparkMax_Steer.I, DriveConstants.PID_SparkMax_Steer.D, DriveConstants.PID_SparkMax_Steer.kFF);
+        steerClosedLoopConfig.iZone(DriveConstants.PID_SparkMax_Steer.IZ);
+        steerClosedLoopConfig.outputRange(-1, 1);
+        steerConfig.apply(steerClosedLoopConfig);
+        steerMotor.configure(steerConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    
 
         // set PID coefficients
-        steerMotorVelocityPID.setP(DriveConstants.PID_SparkMax_Steer.P);
-        steerMotorVelocityPID.setI(DriveConstants.PID_SparkMax_Steer.I);
-        steerMotorVelocityPID.setD(DriveConstants.PID_SparkMax_Steer.D);
-        steerMotorVelocityPID.setIZone(DriveConstants.PID_SparkMax_Steer.IZ);
-        steerMotorVelocityPID.setFF(DriveConstants.PID_SparkMax_Steer.kFF);
-        steerMotorVelocityPID.setOutputRange(-1, 1);
-
-        // set PID coefficients
-        driveMotorVelocityPID.setP(DriveConstants.PID_SparkFlex_Drive.P);
-        driveMotorVelocityPID.setI(DriveConstants.PID_SparkFlex_Drive.I);
-        driveMotorVelocityPID.setD(DriveConstants.PID_SparkFlex_Drive.D);
-        driveMotorVelocityPID.setIZone(DriveConstants.PID_SparkFlex_Drive.IZ);
-        driveMotorVelocityPID.setFF(DriveConstants.PID_SparkFlex_Drive.kFF);
-        driveMotorVelocityPID.setOutputRange(-1, 1);
+        ClosedLoopConfig driveClosedLoopConfig = new ClosedLoopConfig();
+        SparkMaxConfig driveConfig = new SparkMaxConfig();
+        driveClosedLoopConfig.pidf(DriveConstants.PID_SparkFlex_Drive.P, DriveConstants.PID_SparkFlex_Drive.I, DriveConstants.PID_SparkFlex_Drive.D, DriveConstants.PID_SparkFlex_Drive.kFF);
+        driveClosedLoopConfig.iZone(DriveConstants.PID_SparkFlex_Drive.IZ);
+        driveClosedLoopConfig.outputRange(-1, 1);
+        driveConfig.apply(driveClosedLoopConfig);
+        driveMotor.configure(driveConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+       
     }
 
     /**
@@ -70,7 +82,7 @@ public class SwerveModule {
      */
     public SwerveModuleState getState() {
         double driveSpeed = speedFromDriveRpm(driveNEOVortexMotorEncoder.getVelocity());
-        double steerAngleRadians = Math.toRadians(steerAngleEncoder.getAbsolutePosition().getValue() * 360);
+        double steerAngleRadians = Math.toRadians(steerAngleEncoder.getAbsolutePosition().getValueAsDouble() * 360);
 
         return new SwerveModuleState(driveSpeed, new Rotation2d(steerAngleRadians));
     }
@@ -82,17 +94,17 @@ public class SwerveModule {
      */
     public void setDesiredState(SwerveModuleState desiredState, boolean logValues, String name) {
 
-        double steerAngleDegrees = steerAngleEncoder.getAbsolutePosition().getValue() * 360;
+        double steerAngleDegrees = steerAngleEncoder.getAbsolutePosition().getValueAsDouble() * 360;
         double curSteerAngleRadians = Math.toRadians(steerAngleDegrees);
 
         // Optimize the reference state to avoid spinning further than 90 degrees
-        SwerveModuleState state = SwerveModuleState.optimize(desiredState, new Rotation2d(curSteerAngleRadians));
+        var state = SwerveModuleState.optimize(desiredState, new Rotation2d(curSteerAngleRadians));
 
         // The output of the steerAnglePID becomes the steer motor rpm reference.
         double steerMotorRpm = steerAnglePID.calculate(steerAngleDegrees,
                 state.angle.getDegrees());
        
-        steerMotorVelocityPID.setReference(-steerMotorRpm, CANSparkMax.ControlType.kVelocity);
+        steerMotorVelocityPID.setReference(-steerMotorRpm, SparkMax.ControlType.kVelocity);
 
         double driveMotorRpm = driveRpmFromSpeed(state.speedMetersPerSecond);
 
@@ -103,7 +115,7 @@ public class SwerveModule {
             SmartDashboard.putNumber(name + " DriveMotorSpeed", driveSpeed);
         }
 
-        driveMotorVelocityPID.setReference(driveMotorRpm, CANSparkMax.ControlType.kVelocity);
+        driveMotorVelocityPID.setReference(driveMotorRpm, SparkMax.ControlType.kVelocity);
     }
 
     /**
@@ -130,6 +142,6 @@ public class SwerveModule {
 
     public SwerveModulePosition getPosition() {
         double distance = driveNEOVortexMotorEncoder.getPosition();
-        return new SwerveModulePosition(distance, new Rotation2d(Math.toRadians(steerAngleEncoder.getAbsolutePosition().getValue())));
+        return new SwerveModulePosition(distance, new Rotation2d(Math.toRadians(steerAngleEncoder.getAbsolutePosition().getValueAsDouble())));
     }
 }

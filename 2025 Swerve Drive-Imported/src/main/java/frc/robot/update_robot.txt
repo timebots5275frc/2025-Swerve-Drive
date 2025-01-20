@@ -1,0 +1,14 @@
+This file serves to list things you must change when using this as a template.
+
+Things that may change:
+    - The swerve motors. For example, we just switched to Neo Vortex motors. 
+        - We had to switch the driveMotor types to SparkFlex,  & kept steerMotors as sparkmax, driveNEOVortexMotorEncoder to its respective type, etc.
+    - Gear ratios. If a motor is switched, the gear ratio will most likely change. You can find the gear ratio in the specs of the motor.
+    - PID Values. If a motor is switched, its good to tune/check the PID values of the motor and change if needed.
+Things that will probably change:
+    - The year. Hopefully that changes.
+    - The swerve module positions. These are defined in constants.
+    - The ROBOT_SWERVE_CAN and ROBOT_SWERVE_LOCATIONS variables, make sure to change them!!!
+    - The swerve module CAN IDs and their respective encoder IDs.
+    - The Pigeon ID, also in constants.
+Its a relatively good idea to run through every single constant anyway, so do that if you havent.

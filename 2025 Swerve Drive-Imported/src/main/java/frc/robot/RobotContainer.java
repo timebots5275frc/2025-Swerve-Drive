@@ -34,6 +34,7 @@ public class RobotContainer {
   SwerveDrive swerve;
   Input in;
   TeleopJoystickDrive joyDrive;
+  SwerveDrive swerveDrive;
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
 
@@ -63,13 +64,14 @@ public class RobotContainer {
     GenericHID driveInput;
 
     if (usingJoystick) {Joystick driveStick = new Joystick(0); driveInput = driveStick; } else {XboxController controller = new XboxController(0); driveInput = controller;}
+    new JoystickButton(driveInput, 8).onTrue(new InstantCommand(swerve::resetPigeon, swerve));
     in = new Input(driveInput);
     joyDrive = new TeleopJoystickDrive(swerve, in, true);
     swerve.setDefaultCommand(joyDrive);
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
     new Trigger(m_exampleSubsystem::exampleCondition)
         .onTrue(new ExampleCommand(m_exampleSubsystem));
-    new JoystickButton(driveInput, 8).onTrue(new InstantCommand(swerve::resetPigeon, swerve));
+   
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
     m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
